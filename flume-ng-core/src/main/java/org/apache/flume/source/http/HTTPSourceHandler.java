@@ -19,6 +19,8 @@ package org.apache.flume.source.http;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.flume.Event;
 import org.apache.flume.conf.Configurable;
 
@@ -39,7 +41,10 @@ public interface HTTPSourceHandler extends Configurable {
    * event because the request was not in the expected format.
    * @throws Exception If there was an unexpected error.
    */
-  public List<Event> getEvents(HttpServletRequest request) throws
+//  public List<Event> getEvents(HttpServletRequest request) throws
+//          HTTPBadRequestException, Exception;
+
+  public List<Event> getEvents(HttpServletRequest request, HttpServletResponse response) throws
           HTTPBadRequestException, Exception;
 
 }

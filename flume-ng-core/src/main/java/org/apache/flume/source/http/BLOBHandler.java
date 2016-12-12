@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.ByteArrayOutputStream;
@@ -60,7 +61,7 @@ public class BLOBHandler implements HTTPSourceHandler {
    */
   @SuppressWarnings("unchecked")
   @Override
-  public List<Event> getEvents(HttpServletRequest request) throws Exception {
+  public List<Event> getEvents(HttpServletRequest request, HttpServletResponse response) throws Exception {
     Map<String, String> headers = new HashMap<String, String>();
 
     InputStream inputStream = request.getInputStream();

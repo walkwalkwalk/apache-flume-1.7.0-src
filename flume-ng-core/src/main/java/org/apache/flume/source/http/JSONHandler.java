@@ -27,6 +27,8 @@ import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.flume.Context;
 import org.apache.flume.Event;
 import org.apache.flume.event.EventBuilder;
@@ -86,7 +88,7 @@ public class JSONHandler implements HTTPSourceHandler {
    * {@inheritDoc}
    */
   @Override
-  public List<Event> getEvents(HttpServletRequest request) throws Exception {
+  public List<Event> getEvents(HttpServletRequest request, HttpServletResponse response) throws Exception {
     BufferedReader reader = request.getReader();
     String charset = request.getCharacterEncoding();
     //UTF-8 is default for JSON. If no charset is specified, UTF-8 is to

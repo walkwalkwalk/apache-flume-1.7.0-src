@@ -470,13 +470,10 @@ public class SyslogUtils {
     String[] now_arr = _now_t.split(" ");
     StringBuilder now_time = new StringBuilder(50);
     now_time.append(now_arr[0]);
-    now_time.append('\\');
-    now_time.append('t');
+    now_time.append('\t');
     now_time.append(now_arr[1]);
-    now_time.append('\\');
-    now_time.append('t');
+    now_time.append('\t');
     baos.write(now_time.toString().getBytes(), 0, now_time.length());
-
 
     try {
       while (!doneReading && in.readable()) {

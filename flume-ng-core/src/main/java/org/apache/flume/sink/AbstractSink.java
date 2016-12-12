@@ -30,7 +30,7 @@ import com.google.common.base.Preconditions;
 
 @InterfaceAudience.Public
 @InterfaceStability.Stable
-public abstract class AbstractSink implements Sink, LifecycleAware {
+public abstract class  AbstractSink implements Sink, LifecycleAware {
 
   private Channel channel;
   private String name;

@@ -240,9 +240,10 @@ public class HTTPSource extends AbstractSource implements
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+      LOG.debug("before get event, response: {}", response.getOutputStream().toString());
       List<Event> events = Collections.emptyList(); //create empty list
       try {
-        events = handler.getEvents(request);
+        events = handler.getEvents(request, response);
       } catch (HTTPBadRequestException ex) {
         LOG.warn("Received bad request from client. ", ex);
         response.sendError(HttpServletResponse.SC_BAD_REQUEST,
@@ -277,6 +278,7 @@ public class HTTPSource extends AbstractSource implements
       }
       response.setCharacterEncoding(request.getCharacterEncoding());
       response.setStatus(HttpServletResponse.SC_OK);
+      LOG.debug("after get event, response: {}", response.getOutputStream().toString());
       response.flushBuffer();
       sourceCounter.incrementAppendBatchAcceptedCount();
       sourceCounter.addToEventAcceptedCount(events.size());
